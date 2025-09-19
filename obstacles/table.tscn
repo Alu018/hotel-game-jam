@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://2x7annbd7e0"]
+
+[ext_resource type="Texture2D" uid="uid://bo7yqvo3hwogl" path="res://Hana Caraka - Fantasy Interior [sample]/Props/table.png" id="2_4e7v0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5rvb3"]
+size = Vector2(24, 9)
+
+[node name="Table" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_4e7v0")
+region_enabled = true
+region_rect = Rect2(32, 0, 32, 20)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_5rvb3")

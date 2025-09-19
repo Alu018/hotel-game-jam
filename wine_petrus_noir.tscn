@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cinvrlxvlv2e1"]
+
+[ext_resource type="PackedScene" uid="uid://cbyi2vqvli5q4" path="res://interactable.tscn" id="1_2pok6"]
+[ext_resource type="Texture2D" uid="uid://dun77xkefqc1p" path="res://props/wine-petrus-noir.png" id="2_kt66i"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kt66i"]
+radius = 3.0
+height = 12.0
+
+[node name="WinePetrusNoir" instance=ExtResource("1_2pok6")]
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CapsuleShape2D_kt66i")
+
+[node name="AnimatedSprite2D" parent="." index="2"]
+visible = false
+
+[node name="Wine-petrus-noir" type="Sprite2D" parent="." index="4"]
+texture = ExtResource("2_kt66i")

@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://h305y6ae6stk"]
+
+[ext_resource type="PackedScene" uid="uid://cbyi2vqvli5q4" path="res://interactable.tscn" id="1_d27v7"]
+[ext_resource type="Texture2D" uid="uid://d18jygk0fpoc" path="res://Hana Caraka - Fantasy Interior [sample]/Props/barrell.png" id="2_728f5"]
+[ext_resource type="Script" uid="uid://thu8gs7htxbq" path="res://player_blocker_room_8.gd" id="2_uyasn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uyasn"]
+size = Vector2(50, 20)
+
+[node name="PlayerBlocker_Room8" instance=ExtResource("1_d27v7")]
+
+[node name="Delete" type="Node2D" parent="." index="0"]
+script = ExtResource("2_uyasn")
+
+[node name="CollisionShape2D" parent="." index="2"]
+shape = SubResource("RectangleShape2D_uyasn")
+
+[node name="AnimatedSprite2D" parent="." index="3"]
+visible = false
+
+[node name="Barrell" type="Sprite2D" parent="." index="5"]
+visible = false
+position = Vector2(0, -6)
+texture = ExtResource("2_728f5")

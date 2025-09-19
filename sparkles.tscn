@@ -1,0 +1,38 @@
+[gd_scene load_steps=8 format=3 uid="uid://cwdy7nvouv0wh"]
+
+[ext_resource type="Texture2D" uid="uid://kwnjow18ityt" path="res://sparkles/sparkles1.png" id="1_dusgw"]
+[ext_resource type="Texture2D" uid="uid://daxjo8xyakn0m" path="res://sparkles/sparkles2.png" id="2_v40pw"]
+[ext_resource type="Texture2D" uid="uid://lnc8f6hf6e48" path="res://sparkles/sparkles3.png" id="3_ehaml"]
+[ext_resource type="Texture2D" uid="uid://cpk5fabdmooyc" path="res://sparkles/sparkles4.png" id="4_v6qmw"]
+[ext_resource type="Texture2D" uid="uid://kbgharnmpcoc" path="res://sparkles/sparkles5.png" id="5_ye1mt"]
+[ext_resource type="Texture2D" uid="uid://bmif20ihttgnj" path="res://sparkles/sparkles6.png" id="6_tm3eb"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fmq5p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_dusgw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_v40pw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ehaml")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_v6qmw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ye1mt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_tm3eb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Sparkles" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_fmq5p")
+autoplay = "default"

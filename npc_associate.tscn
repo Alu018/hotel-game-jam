@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://y87xdt46m3gk"]
+
+[ext_resource type="PackedScene" uid="uid://cbyi2vqvli5q4" path="res://interactable.tscn" id="1_x2r1f"]
+
+[node name="Associate" instance=ExtResource("1_x2r1f")]
+
+[node name="AnimatedSprite2D" parent="." index="2"]
+animation = &"idle_down"
+autoplay = "idle_down"

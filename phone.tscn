@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://c2kpgyw8nvt5f"]
+
+[ext_resource type="PackedScene" uid="uid://cbyi2vqvli5q4" path="res://interactable.tscn" id="1_lnqov"]
+[ext_resource type="Texture2D" uid="uid://ixfi3vh335d" path="res://Modern tiles_Free/Interiors_free/16x16/Interiors_free_16x16.png" id="2_0e3g3"]
+[ext_resource type="Texture2D" uid="uid://da0mbitve3dre" path="res://props/rotary_phone.png" id="2_3rj5o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3rj5o"]
+size = Vector2(12, 14)
+
+[node name="Phone" instance=ExtResource("1_lnqov")]
+
+[node name="InteractionIndicator" parent="." index="0"]
+visible = false
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("RectangleShape2D_3rj5o")
+
+[node name="AnimatedSprite2D" parent="." index="2"]
+visible = false
+
+[node name="Nightstand" type="Sprite2D" parent="." index="4"]
+position = Vector2(0, 2)
+texture = ExtResource("2_0e3g3")
+region_enabled = true
+region_rect = Rect2(16, 916, 16, 22)
+
+[node name="Phone" type="Sprite2D" parent="." index="5"]
+position = Vector2(0, -7)
+texture = ExtResource("2_3rj5o")
+region_rect = Rect2(118, 160, 10, 10)

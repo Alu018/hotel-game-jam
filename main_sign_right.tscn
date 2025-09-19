@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://k83acxp6fl16"]
+
+[ext_resource type="PackedScene" uid="uid://cbyi2vqvli5q4" path="res://interactable.tscn" id="1_3vp4a"]
+[ext_resource type="Texture2D" uid="uid://dmdx5nb866uiw" path="res://sierrassets furniture pack/furniture/furniture spritesheet.png" id="2_0wn5d"]
+[ext_resource type="Texture2D" uid="uid://ij6d42tu1h1f" path="res://Hana Caraka - Topdown Tileset [sample]/Props/Other.png" id="3_xlacn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3vp4a"]
+
+[node name="Sign_MainRight" instance=ExtResource("1_3vp4a")]
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="1"]
+visible = false
+texture = ExtResource("2_0wn5d")
+region_enabled = true
+region_rect = Rect2(376, 204, 12, 16)
+
+[node name="Sign" type="Sprite2D" parent="." index="2"]
+texture = ExtResource("3_xlacn")
+region_enabled = true
+region_rect = Rect2(18, 34, 12, 12)
+
+[node name="AnimatedSprite2D" parent="." index="4"]
+sprite_frames = SubResource("SpriteFrames_3vp4a")
+animation = &"default"
+autoplay = ""

@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://efa5ij5mo14f"]
+
+[ext_resource type="PackedScene" uid="uid://cbyi2vqvli5q4" path="res://interactable.tscn" id="1_eahoq"]
+[ext_resource type="Texture2D" uid="uid://dpq67q15ue4be" path="res://Hana Caraka - Topdown Tileset [sample]/Props/Tree.png" id="2_bf1k0"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bf1k0"]
+radius = 7.0
+height = 22.0
+
+[node name="RedTree" instance=ExtResource("1_eahoq")]
+
+[node name="Tree" type="Sprite2D" parent="." index="1"]
+position = Vector2(0, -11)
+texture = ExtResource("2_bf1k0")
+region_enabled = true
+region_rect = Rect2(68, 4, 24, 40)
+
+[node name="CollisionShape2D" parent="." index="2"]
+position = Vector2(0, -9)
+shape = SubResource("CapsuleShape2D_bf1k0")
+
+[node name="AnimatedSprite2D" parent="." index="3"]
+visible = false
+autoplay = ""

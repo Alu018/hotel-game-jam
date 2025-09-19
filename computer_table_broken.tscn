@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://b3lch1ysso3gy"]
+
+[ext_resource type="PackedScene" uid="uid://cbyi2vqvli5q4" path="res://interactable.tscn" id="1_ni7k1"]
+[ext_resource type="Texture2D" uid="uid://dmdx5nb866uiw" path="res://sierrassets furniture pack/furniture/furniture spritesheet.png" id="2_2s7vy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2s7vy"]
+size = Vector2(12, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v2w5v"]
+size = Vector2(12, 24)
+
+[node name="ComputerTableBroken" instance=ExtResource("1_ni7k1")]
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_2s7vy")
+
+[node name="AnimatedSprite2D" parent="." index="2"]
+visible = false
+
+[node name="CollisionShape2D" parent="InteractionArea" index="0"]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_v2w5v")
+
+[node name="Table" type="Sprite2D" parent="." index="4"]
+texture = ExtResource("2_2s7vy")
+region_enabled = true
+region_rect = Rect2(118, 138, 18, 14)
+
+[node name="Computer" type="Sprite2D" parent="." index="5"]
+position = Vector2(0, -10)
+texture = ExtResource("2_2s7vy")
+region_enabled = true
+region_rect = Rect2(256, 70, 14, 14)
+
+[node name="ComputerStool" type="Sprite2D" parent="." index="6"]
+position = Vector2(0, 14)
+texture = ExtResource("2_2s7vy")
+region_enabled = true
+region_rect = Rect2(360, 90, 10, 12)

@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://ci8fw3esqfni5"]
+
+[ext_resource type="PackedScene" uid="uid://cbyi2vqvli5q4" path="res://interactable.tscn" id="1_x3rwx"]
+
+[node name="GangMember" instance=ExtResource("1_x3rwx")]

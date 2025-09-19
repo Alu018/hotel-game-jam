@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://nioyjvxc1drp"]
+
+[ext_resource type="PackedScene" uid="uid://bt8t74on4ocsn" path="res://obstacles/obstacle.tscn" id="1_tct4g"]
+[ext_resource type="Texture2D" uid="uid://d18wfqek5bxf2" path="res://Hana Caraka - Fantasy Interior [sample]/Props/shelf.png" id="2_a5w7c"]
+[ext_resource type="Texture2D" uid="uid://cxn1pombvs4ai" path="res://props/wine1.png" id="3_7smlm"]
+[ext_resource type="Texture2D" uid="uid://2xnl1rqt5eev" path="res://props/wine2.png" id="4_83ui1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a5w7c"]
+size = Vector2(14, 13)
+
+[node name="WineShelf" instance=ExtResource("1_tct4g")]
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(0, -11)
+texture = ExtResource("2_a5w7c")
+region_rect = Rect2(2, 8, 20, 30)
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, -7.5)
+shape = SubResource("RectangleShape2D_a5w7c")
+
+[node name="Wine1" type="Sprite2D" parent="." index="2"]
+position = Vector2(-3, -11)
+texture = ExtResource("3_7smlm")
+region_enabled = true
+region_rect = Rect2(4, 10, 8, 4)
+
+[node name="Wine2" type="Sprite2D" parent="." index="3"]
+position = Vector2(3, -11)
+texture = ExtResource("3_7smlm")
+region_enabled = true
+region_rect = Rect2(4, 10, 8, 4)
+
+[node name="Wine3" type="Sprite2D" parent="." index="4"]
+position = Vector2(-3, -3)
+texture = ExtResource("3_7smlm")
+region_enabled = true
+region_rect = Rect2(4, 10, 8, 4)
+
+[node name="Wine4" type="Sprite2D" parent="." index="5"]
+position = Vector2(3, -3)
+texture = ExtResource("3_7smlm")
+region_enabled = true
+region_rect = Rect2(4, 10, 8, 4)
+
+[node name="Wine5" type="Sprite2D" parent="." index="6"]
+position = Vector2(-4, -25)
+texture = ExtResource("3_7smlm")
+
+[node name="Wine6" type="Sprite2D" parent="." index="7"]
+position = Vector2(4, -26)
+texture = ExtResource("4_83ui1")

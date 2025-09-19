@@ -1,0 +1,65 @@
+[gd_scene load_steps=11 format=3 uid="uid://bajbbq8wcu1qs"]
+
+[ext_resource type="PackedScene" uid="uid://cbyi2vqvli5q4" path="res://interactable.tscn" id="1_bna4b"]
+[ext_resource type="Script" uid="uid://crk2yy3owdj77" path="res://suitcase.gd" id="2_kguwf"]
+[ext_resource type="Texture2D" uid="uid://dgwm50cd466dg" path="res://bags/Bag1/LeatherBag1.png" id="2_q74i1"]
+[ext_resource type="Texture2D" uid="uid://d0r0in66255yc" path="res://Fantasy-UI.png" id="3_p8wcj"]
+[ext_resource type="PackedScene" uid="uid://cwdy7nvouv0wh" path="res://sparkles.tscn" id="4_kmisx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_surkw"]
+atlas = ExtResource("3_p8wcj")
+region = Rect2(256, 208, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0k2he"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_surkw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_surkw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q74i1"]
+size = Vector2(14, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bna4b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ideak"]
+radius = 18.0278
+
+[node name="Suitcase" instance=ExtResource("1_bna4b")]
+
+[node name="Delete" type="Node2D" parent="." index="0"]
+script = ExtResource("2_kguwf")
+
+[node name="Suitcase" type="Sprite2D" parent="." index="2"]
+texture = ExtResource("2_q74i1")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="InteractionIndicator" parent="." index="3"]
+sprite_frames = SubResource("SpriteFrames_0k2he")
+frame_progress = 0.0
+
+[node name="CollisionShape2D" parent="." index="4"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_q74i1")
+
+[node name="AnimatedSprite2D" parent="." index="5"]
+sprite_frames = SubResource("SpriteFrames_bna4b")
+animation = &"default"
+autoplay = ""
+
+[node name="Sparkles" parent="." index="6" instance=ExtResource("4_kmisx")]
+position = Vector2(7, -4)
+frame = 5
+frame_progress = 0.220286
+
+[node name="CollisionShape2D" parent="InteractionArea" index="0"]
+position = Vector2(0, 3)
+shape = SubResource("CircleShape2D_ideak")

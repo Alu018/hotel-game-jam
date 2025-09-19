@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://c4e8uf75rt5cw"]
+
+[ext_resource type="PackedScene" uid="uid://cbyi2vqvli5q4" path="res://interactable.tscn" id="1_ck1uu"]
+[ext_resource type="Texture2D" uid="uid://cbfiy87xncbgj" path="res://Hana Caraka - Base Character [sample]/idle.png" id="2_w5alt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5alt"]
+atlas = ExtResource("2_w5alt")
+region = Rect2(32, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rthff"]
+atlas = ExtResource("2_w5alt")
+region = Rect2(112, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5jg7s"]
+atlas = ExtResource("2_w5alt")
+region = Rect2(192, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhkje"]
+atlas = ExtResource("2_w5alt")
+region = Rect2(272, 112, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_keo0v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w5alt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rthff")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5jg7s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rhkje")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[node name="Concierge" instance=ExtResource("1_ck1uu")]
+
+[node name="InteractionIndicator" parent="." index="0"]
+unique_name_in_owner = true
+
+[node name="AnimatedSprite2D" parent="." index="2"]
+sprite_frames = SubResource("SpriteFrames_keo0v")
+animation = &"default"
+autoplay = "default"
+frame_progress = 0.550863
+
+[node name="CollisionShape2D" parent="InteractionArea" index="0"]
+position = Vector2(0, 11)

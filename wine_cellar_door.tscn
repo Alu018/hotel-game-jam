@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://4rclapwnintl"]
+
+[ext_resource type="PackedScene" uid="uid://cbyi2vqvli5q4" path="res://interactable.tscn" id="1_nuw3p"]
+[ext_resource type="Texture2D" uid="uid://dvyvi0bllu3gs" path="res://sierrassets furniture pack/furniture/furniture pack coloured outline.png" id="2_ajxwc"]
+[ext_resource type="Script" uid="uid://d168gbf8calev" path="res://delete_wineCellarDoor.gd" id="2_j5dmt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ajxwc"]
+size = Vector2(12, 17)
+
+[node name="WineCellarDoor" instance=ExtResource("1_nuw3p")]
+
+[node name="Delete" type="Node2D" parent="." index="0"]
+script = ExtResource("2_j5dmt")
+
+[node name="CollisionShape2D" parent="." index="2"]
+position = Vector2(0, -6.5)
+shape = SubResource("RectangleShape2D_ajxwc")
+
+[node name="AnimatedSprite2D" parent="." index="3"]
+visible = false
+
+[node name="WineCellarDoor" type="Sprite2D" parent="." index="5"]
+position = Vector2(0, -7)
+texture = ExtResource("2_ajxwc")
+region_enabled = true
+region_rect = Rect2(594, 324, 18, 32)

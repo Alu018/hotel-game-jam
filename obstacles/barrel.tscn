@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3tkck7ms6ell"]
+
+[ext_resource type="PackedScene" uid="uid://bt8t74on4ocsn" path="res://obstacles/obstacle.tscn" id="1_gq374"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gq374"]
+radius = 5.0
+
+[node name="Barrel" instance=ExtResource("1_gq374")]
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(0, -2)
+region_rect = Rect2(0, 12, 16, 18)
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_gq374")

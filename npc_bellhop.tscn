@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://wckafepb3dav"]
+
+[ext_resource type="PackedScene" uid="uid://cbyi2vqvli5q4" path="res://interactable.tscn" id="1_772lt"]
+
+[node name="Bellhop" instance=ExtResource("1_772lt")]
+
+[node name="AnimatedSprite2D" parent="." index="2"]
+animation = &"idle_down"
+autoplay = "idle_down"

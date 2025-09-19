@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://bu5sa1v3ijpno"]
+
+[ext_resource type="PackedScene" uid="uid://bt8t74on4ocsn" path="res://obstacles/obstacle.tscn" id="1_i32yf"]
+[ext_resource type="Texture2D" uid="uid://dmdx5nb866uiw" path="res://sierrassets furniture pack/furniture/furniture spritesheet.png" id="2_cnre6"]
+
+[node name="ComputerTable" instance=ExtResource("1_i32yf")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_cnre6")
+region_rect = Rect2(118, 138, 18, 14)
+
+[node name="Computer" type="Sprite2D" parent="." index="1"]
+position = Vector2(0, -10)
+texture = ExtResource("2_cnre6")
+region_enabled = true
+region_rect = Rect2(256, 70, 14, 14)
+
+[node name="CollisionShape2D" parent="." index="2"]
+position = Vector2(0, -1.375)
+
+[node name="ComputerStool" type="Sprite2D" parent="." index="3"]
+position = Vector2(0, 14)
+texture = ExtResource("2_cnre6")
+region_enabled = true
+region_rect = Rect2(360, 90, 10, 12)

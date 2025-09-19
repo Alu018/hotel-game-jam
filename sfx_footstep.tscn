@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://b44f3myodp0fu"]
+
+[ext_resource type="AudioStream" uid="uid://dpvbbownkd0cd" path="res://sfx/Concrete1.wav" id="1_7vyrg"]
+[ext_resource type="Script" uid="uid://ccpvi6y3x3aox" path="res://sfx_footstep.gd" id="2_7vyrg"]
+
+[node name="SFX_footstep" type="AudioStreamPlayer"]
+stream = ExtResource("1_7vyrg")
+volume_db = -2.0
+pitch_scale = 1.3
+script = ExtResource("2_7vyrg")

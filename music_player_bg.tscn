@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://deqg5mb165uan"]
+
+[ext_resource type="Script" uid="uid://782epdbushwg" path="res://music_player_bg.gd" id="1_vbjxt"]
+[ext_resource type="AudioStream" uid="uid://o4kvaishl1bt" path="res://Pixel Music Pack/mp3/Pixel 1.mp3" id="1_x6ks2"]
+
+[node name="MusicPlayerBG" type="AudioStreamPlayer"]
+stream = ExtResource("1_x6ks2")
+autoplay = true
+parameters/looping = true
+script = ExtResource("1_vbjxt")

@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://btnvmaygotwi7"]
+
+[ext_resource type="PackedScene" uid="uid://cbyi2vqvli5q4" path="res://interactable.tscn" id="1_1myfy"]
+[ext_resource type="Texture2D" uid="uid://xhkh4kov6d38" path="res://inventory/glasses.png" id="2_6nicl"]
+
+[sub_resource type="GDScript" id="GDScript_6nicl"]
+script/source = "extends \"res://interact.gd\"
+"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6nicl"]
+
+[node name="Glasses" instance=ExtResource("1_1myfy")]
+script = SubResource("GDScript_6nicl")
+
+[node name="AnimatedSprite2D" parent="." index="2"]
+sprite_frames = SubResource("SpriteFrames_6nicl")
+animation = &"default"
+autoplay = ""
+
+[node name="Glasses" type="Sprite2D" parent="." index="4"]
+texture = ExtResource("2_6nicl")

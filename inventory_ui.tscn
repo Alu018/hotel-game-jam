@@ -1,0 +1,108 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0mnd2jmldh4q"]
+
+[ext_resource type="Script" uid="uid://bnlm8fc1a1oei" path="res://inventory_ui.gd" id="1_5v8q7"]
+[ext_resource type="FontFile" uid="uid://bu7js3732vtji" path="res://Pixuf.ttf" id="2_gf3dx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gf3dx"]
+bg_color = Color(0.273873, 0.273873, 0.273873, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.165656, 0.165656, 0.165656, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="InventoryUI" type="CanvasLayer"]
+script = ExtResource("1_5v8q7")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 45.0
+offset_bottom = 45.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="ItemIcon" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+stretch_mode = 2
+
+[node name="TooltipPanel" type="Panel" parent="."]
+self_modulate = Color(0, 0, 0, 0)
+offset_right = 59.0
+offset_bottom = 15.0
+
+[node name="ColorRect" type="ColorRect" parent="TooltipPanel"]
+layout_mode = 0
+offset_right = 59.0
+offset_bottom = 15.0
+color = Color(0, 0, 0, 0.784314)
+
+[node name="TooltipLabel" type="Label" parent="TooltipPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_fonts/font = ExtResource("2_gf3dx")
+theme_override_font_sizes/font_size = 8
+text = "sdafsdf"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ItemModal" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 165.0
+offset_top = 52.0
+offset_right = -165.0
+offset_bottom = -52.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_gf3dx")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ItemModal"]
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -64.0
+offset_right = 48.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemIcon" type="TextureRect" parent="ItemModal/VBoxContainer"]
+layout_mode = 2
+
+[node name="ItemTitle" type="Label" parent="ItemModal/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_gf3dx")
+theme_override_font_sizes/font_size = 8
+text = "Item name"
+
+[node name="ItemDescription" type="RichTextLabel" parent="ItemModal/VBoxContainer"]
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_gf3dx")
+theme_override_font_sizes/normal_font_size = 8
+text = "Long description"
+
+[node name="CloseButton" type="Button" parent="ItemModal/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("2_gf3dx")
+theme_override_font_sizes/font_size = 8
+text = "RETURN"
