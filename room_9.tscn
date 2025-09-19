@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://2x7annbd7e0" path="res://obstacles/table.tscn" id="13_sbn3w"]
 [ext_resource type="PackedScene" uid="uid://cij2cfjadod67" path="res://safe.tscn" id="14_h2q3j"]
 [ext_resource type="PackedScene" uid="uid://c2kpgyw8nvt5f" path="res://phone.tscn" id="14_v7fty"]
+[ext_resource type="PackedScene" uid="uid://c1hyrotyryf66" path="res://player_bed.tscn" id="15_ds4nb"]
 [ext_resource type="PackedScene" uid="uid://bajbbq8wcu1qs" path="res://suitcase.tscn" id="15_qamub"]
 [ext_resource type="PackedScene" uid="uid://c1c8yhsy4l52h" path="res://player.tscn" id="16_621rh"]
 [ext_resource type="Script" uid="uid://d0xwfs7lmnnfb" path="res://room_transition.gd" id="17_at0ok"]
@@ -1645,9 +1646,6 @@ sources/1 = SubResource("TileSetAtlasSource_vc1db")
 sources/2 = SubResource("TileSetAtlasSource_3afyh")
 sources/4 = SubResource("TileSetAtlasSource_ee5kq")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_i2g5o"]
-size = Vector2(14, 16)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hgtg3"]
 size = Vector2(16, 20)
 
@@ -1719,18 +1717,11 @@ y_sort_enabled = true
 [node name="Bedroom" type="StaticBody2D" parent="YSort"]
 y_sort_enabled = true
 
+[node name="PlayerBed" parent="YSort/Bedroom" instance=ExtResource("15_ds4nb")]
+position = Vector2(293, 95)
+
 [node name="Phone" parent="YSort/Bedroom" instance=ExtResource("14_v7fty")]
-position = Vector2(294, 131)
-
-[node name="Bed" type="Sprite2D" parent="YSort/Bedroom"]
-position = Vector2(292, 99)
-texture = ExtResource("10_2ftqn")
-region_enabled = true
-region_rect = Rect2(54, 4, 20, 32)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Bedroom"]
-position = Vector2(292, 101)
-shape = SubResource("RectangleShape2D_i2g5o")
+position = Vector2(294, 137)
 
 [node name="Bookshelf" type="Sprite2D" parent="YSort/Bedroom"]
 position = Vector2(221, 89)
@@ -1783,23 +1774,23 @@ position = Vector2(287.5, 198.75)
 shape = SubResource("RectangleShape2D_5hbeb")
 
 [node name="Crate" type="Sprite2D" parent="YSort/Bedroom"]
-position = Vector2(295, 156)
+position = Vector2(295, 158)
 texture = ExtResource("11_2s455")
 region_enabled = true
 region_rect = Rect2(66, 48, 12, 16)
 
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="YSort/Bedroom"]
-position = Vector2(295, 156)
+position = Vector2(295, 158)
 shape = SubResource("RectangleShape2D_qy8wk")
 
 [node name="Crate2" type="Sprite2D" parent="YSort/Bedroom"]
-position = Vector2(295, 168)
+position = Vector2(295, 170)
 texture = ExtResource("11_2s455")
 region_enabled = true
 region_rect = Rect2(66, 48, 12, 16)
 
 [node name="CollisionShape2D8" type="CollisionShape2D" parent="YSort/Bedroom"]
-position = Vector2(295, 168)
+position = Vector2(295, 170)
 shape = SubResource("RectangleShape2D_qy8wk")
 
 [node name="Bathroom" type="StaticBody2D" parent="YSort"]
@@ -1893,6 +1884,7 @@ frame_progress = 0.374233
 unique_name_in_owner = true
 position = Vector2(0, -7)
 
+[connection signal="interact" from="YSort/Bedroom/PlayerBed" to="DialogueBox" method="_on_player_bed_interact"]
 [connection signal="interact" from="YSort/Bedroom/Phone" to="DialogueBox" method="_on_phone_interact"]
 [connection signal="safe_opened" from="YSort/Safe" to="DialogueBox" method="_on_safe_safe_opened"]
 [connection signal="interact" from="YSort/Suitcase" to="DialogueBox" method="_on_suitcase_interact"]

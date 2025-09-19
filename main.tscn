@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=4 uid="uid://bwni2ngdfoydd"]
+[gd_scene load_steps=98 format=4 uid="uid://bwni2ngdfoydd"]
 
 [ext_resource type="Script" uid="uid://dbi5eu58hbev0" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://c1c8yhsy4l52h" path="res://player.tscn" id="1_ig7tw"]
@@ -3565,6 +3565,9 @@ texture = ExtResource("6_yaehf")
 sources/0 = SubResource("TileSetAtlasSource_efxa6")
 sources/1 = SubResource("TileSetAtlasSource_kq58d")
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_uypp3"]
+radius = 4.0
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_4lmeg"]
 atlas = ExtResource("22_h8e4i")
 region = Rect2(0, 0, 32, 32)
@@ -3610,6 +3613,12 @@ size = Vector2(20, 3.5)
 [sub_resource type="CircleShape2D" id="CircleShape2D_come4"]
 radius = 3.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0cp0l"]
+size = Vector2(29, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lswn8"]
+size = Vector2(11.75, 17)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a6jrf"]
 size = Vector2(10, 7)
 
@@ -3619,11 +3628,11 @@ size = Vector2(12, 10)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qsp4k"]
 size = Vector2(25, 9.5)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0cp0l"]
-size = Vector2(29, 10)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uypp3"]
+size = Vector2(26, 14)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lswn8"]
-size = Vector2(11.75, 17)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_blkrb"]
+size = Vector2(11, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kq58d"]
 size = Vector2(92, 11)
@@ -3677,8 +3686,8 @@ position = Vector2(240, 135)
 tile_map_data = PackedByteArray("AADb//f/AAALAAAAAADb//j/AAALAAEAAADb//n/AAALAAIAAADN//f/AAAJAAAAAADN//j/AAAJAAEAAADN//n/AAAJAAIAAADO//f/AAAKAAAAAADO//j/AAAKAAEAAADO//n/AAAKAAIAAADP//f/AAAKAAAAAADP//j/AAAKAAEAAADP//n/AAAKAAIAAADQ//f/AAAKAAAAAADQ//j/AAAKAAEAAADQ//n/AAAKAAIAAADR//f/AAAKAAAAAADR//j/AAAKAAEAAADR//n/AAAKAAIAAADS//f/AAAKAAAAAADS//j/AAAKAAEAAADS//n/AAAKAAIAAADT//f/AAAKAAAAAADT//j/AAAKAAEAAADT//n/AAAKAAIAAADU//f/AAAKAAAAAADU//j/AAAKAAEAAADU//n/AAAKAAIAAADV//f/AAAKAAAAAADV//j/AAAKAAEAAADV//n/AAAKAAIAAADW//f/AAAKAAAAAADW//j/AAAKAAEAAADW//n/AAAKAAIAAADX//f/AAAKAAAAAADX//j/AAAKAAEAAADX//n/AAAKAAIAAADY//f/AAAKAAAAAADY//j/AAAKAAEAAADY//n/AAAKAAIAAADZ//f/AAAKAAAAAADZ//j/AAAKAAEAAADZ//n/AAAKAAIAAADa//f/AAAKAAAAAADa//j/AAAKAAEAAADa//n/AAAKAAIAAAA=")
 tile_set = SubResource("TileSet_lquwl")
 
-[node name="TileProps" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAMAA0AAAALAAMAAAAMAAoAAAAMAAIAAAAMAAsAAAAMAAMAAAAMAAgAAAALAAIAAAAMAAkAAAALAAMAAAAMAA4AAAADAAQAAAAGAOP/AAAJAAYAAAAGAOT/AAAJAAcAAAAKAOP/AAAJAAYAAAAKAOT/AAAJAAcAAAAOAOP/AAAJAAYAAAAOAOT/AAAJAAcAAAASAOP/AAAJAAYAAAASAOT/AAAJAAcAAAAWAOP/AAAJAAYAAAAWAOT/AAAJAAcAAAAHAOP/AAAKAAYAAAAHAOT/AAAKAAcAAAALAOP/AAAKAAYAAAALAOT/AAAKAAcAAAAPAOP/AAAKAAYAAAAPAOT/AAAKAAcAAAATAOP/AAAKAAYAAAATAOT/AAAKAAcAAAAXAOP/AAAKAAYAAAAXAOT/AAAKAAcAAAAMAAwAAAALAAIAAAA=")
+[node name="Tile_CourtyardWindows" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAGAOP/AAAJAAYAAAAGAOT/AAAJAAcAAAAKAOP/AAAJAAYAAAAKAOT/AAAJAAcAAAAOAOP/AAAJAAYAAAAOAOT/AAAJAAcAAAASAOP/AAAJAAYAAAASAOT/AAAJAAcAAAAWAOP/AAAJAAYAAAAWAOT/AAAJAAcAAAAHAOP/AAAKAAYAAAAHAOT/AAAKAAcAAAALAOP/AAAKAAYAAAALAOT/AAAKAAcAAAAPAOP/AAAKAAYAAAAPAOT/AAAKAAcAAAATAOP/AAAKAAYAAAATAOT/AAAKAAcAAAAXAOP/AAAKAAYAAAAXAOT/AAAKAAcAAAA=")
 tile_set = SubResource("TileSet_dg77c")
 
 [node name="TileStructure" type="TileMapLayer" parent="."]
@@ -3700,17 +3709,113 @@ position = Vector2(-142, 77)
 unique_name_in_owner = true
 position = Vector2(190, -194)
 
-[node name="FramedPicture" type="Sprite2D" parent="."]
-position = Vector2(369, 64)
+[node name="PlantProps" type="StaticBody2D" parent="Hallways"]
+position = Vector2(148, -195)
+
+[node name="plant1" type="Sprite2D" parent="Hallways/PlantProps"]
+position = Vector2(53, 337)
+texture = ExtResource("5_4c57u")
+region_enabled = true
+region_rect = Rect2(176, 34, 16, 24)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Hallways/PlantProps"]
+position = Vector2(53, 339)
+shape = SubResource("CircleShape2D_uypp3")
+
+[node name="plant2" type="Sprite2D" parent="Hallways/PlantProps"]
+position = Vector2(53, 370)
+texture = ExtResource("5_4c57u")
+region_enabled = true
+region_rect = Rect2(194, 36, 12, 22)
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Hallways/PlantProps"]
+position = Vector2(53, 372)
+shape = SubResource("CircleShape2D_uypp3")
+
+[node name="plant3" type="Sprite2D" parent="Hallways/PlantProps"]
+position = Vector2(53, 401)
+texture = ExtResource("5_4c57u")
+region_enabled = true
+region_rect = Rect2(176, 34, 16, 24)
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Hallways/PlantProps"]
+position = Vector2(53, 403)
+shape = SubResource("CircleShape2D_uypp3")
+
+[node name="PlantProps2" type="StaticBody2D" parent="Hallways"]
+position = Vector2(226, -195)
+
+[node name="plant1" type="Sprite2D" parent="Hallways/PlantProps2"]
+position = Vector2(53, 337)
+texture = ExtResource("5_4c57u")
+region_enabled = true
+region_rect = Rect2(176, 34, 16, 24)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Hallways/PlantProps2"]
+position = Vector2(53, 339)
+shape = SubResource("CircleShape2D_uypp3")
+
+[node name="plant2" type="Sprite2D" parent="Hallways/PlantProps2"]
+position = Vector2(53, 370)
+texture = ExtResource("5_4c57u")
+region_enabled = true
+region_rect = Rect2(194, 36, 12, 22)
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Hallways/PlantProps2"]
+position = Vector2(53, 372)
+shape = SubResource("CircleShape2D_uypp3")
+
+[node name="plant3" type="Sprite2D" parent="Hallways/PlantProps2"]
+position = Vector2(53, 401)
+texture = ExtResource("5_4c57u")
+region_enabled = true
+region_rect = Rect2(176, 34, 16, 24)
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Hallways/PlantProps2"]
+position = Vector2(53, 403)
+shape = SubResource("CircleShape2D_uypp3")
+
+[node name="HangingPlant" type="Sprite2D" parent="."]
+position = Vector2(-341, 59)
+texture = ExtResource("5_4c57u")
+region_enabled = true
+region_rect = Rect2(178, 6, 12, 10)
+
+[node name="HangingPlant2" type="Sprite2D" parent="."]
+position = Vector2(-221, 59)
+texture = ExtResource("5_4c57u")
+region_enabled = true
+region_rect = Rect2(178, 6, 12, 10)
+
+[node name="Picture_Gengar" type="Sprite2D" parent="."]
+position = Vector2(479, 64)
 texture = ExtResource("17_lswn8")
 region_enabled = true
 region_rect = Rect2(0, 1128, 16, 20)
 
-[node name="Piano" type="Sprite2D" parent="."]
-position = Vector2(-426, 33)
-texture = ExtResource("6_yaehf")
+[node name="Picture_Gengar2" type="Sprite2D" parent="."]
+position = Vector2(13, 64)
+texture = ExtResource("17_lswn8")
 region_enabled = true
-region_rect = Rect2(254, 22, 34, 28)
+region_rect = Rect2(18, 1130, 14, 16)
+
+[node name="Picture_Hill" type="Sprite2D" parent="."]
+position = Vector2(-5, -208)
+texture = ExtResource("17_lswn8")
+region_enabled = true
+region_rect = Rect2(2, 1162, 14, 16)
+
+[node name="Picture_Smth" type="Sprite2D" parent="."]
+position = Vector2(771, 64)
+texture = ExtResource("17_lswn8")
+region_enabled = true
+region_rect = Rect2(2, 1194, 14, 16)
+
+[node name="Picture_Scream" type="Sprite2D" parent="."]
+position = Vector2(509, -208)
+texture = ExtResource("14_0n3wm")
+region_enabled = true
+region_rect = Rect2(612, 340, 16, 16)
 
 [node name="YSort" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -3799,12 +3904,43 @@ position = Vector2(352, -431)
 [node name="Props" type="Node2D" parent="YSort"]
 y_sort_enabled = true
 
-[node name="Blackboard" type="Sprite2D" parent="YSort/Props"]
-position = Vector2(-488, 15)
-scale = Vector2(-1, 1)
+[node name="Cupboard" type="StaticBody2D" parent="YSort/Props"]
+
+[node name="Cabinet" type="Sprite2D" parent="YSort/Props/Cupboard"]
+position = Vector2(-374, 33)
 texture = ExtResource("6_yaehf")
 region_enabled = true
-region_rect = Rect2(136, 288, 32, 18)
+region_rect = Rect2(136, 186, 32, 18)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Props/Cupboard"]
+position = Vector2(-374.5, 31)
+shape = SubResource("RectangleShape2D_0cp0l")
+
+[node name="VendingMachine" type="StaticBody2D" parent="YSort/Props"]
+position = Vector2(-9, 0)
+
+[node name="VendingMachine" type="Sprite2D" parent="YSort/Props/VendingMachine"]
+position = Vector2(-540, 26)
+texture = ExtResource("6_yaehf")
+region_enabled = true
+region_rect = Rect2(322, 86, 18, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Props/VendingMachine"]
+position = Vector2(-539.875, 27.5)
+shape = SubResource("RectangleShape2D_lswn8")
+
+[node name="VendingMachine2" type="StaticBody2D" parent="YSort/Props"]
+position = Vector2(8, 0)
+
+[node name="VendingMachine" type="Sprite2D" parent="YSort/Props/VendingMachine2"]
+position = Vector2(-540, 26)
+texture = ExtResource("6_yaehf")
+region_enabled = true
+region_rect = Rect2(322, 86, 18, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Props/VendingMachine2"]
+position = Vector2(-539.875, 27.5)
+shape = SubResource("RectangleShape2D_lswn8")
 
 [node name="Armchair_Left" type="StaticBody2D" parent="YSort/Props"]
 position = Vector2(-425, 124)
@@ -3820,7 +3956,8 @@ shape = SubResource("RectangleShape2D_a6jrf")
 
 [node name="Armchair_Right" type="StaticBody2D" parent="YSort/Props"]
 position = Vector2(-375, 124)
-scale = Vector2(-1, 1)
+rotation = 3.14159
+scale = Vector2(1, -1)
 
 [node name="armchair" type="Sprite2D" parent="YSort/Props/Armchair_Right"]
 texture = ExtResource("5_4c57u")
@@ -3876,47 +4013,76 @@ region_rect = Rect2(194, 4, 12, 12)
 position = Vector2(9.5, -0.75)
 shape = SubResource("RectangleShape2D_qsp4k")
 
-[node name="FurnitureSpritesheet" type="Sprite2D" parent="YSort/Props"]
-visible = false
-position = Vector2(-446, 351)
-texture = ExtResource("6_yaehf")
+[node name="RecRoom" type="StaticBody2D" parent="YSort/Props"]
+y_sort_enabled = true
+position = Vector2(-437, 33)
 
-[node name="Cupboard" type="StaticBody2D" parent="YSort/Props"]
-
-[node name="Cabinet" type="Sprite2D" parent="YSort/Props/Cupboard"]
-position = Vector2(-374, 33)
+[node name="Piano" type="Sprite2D" parent="YSort/Props/RecRoom"]
 texture = ExtResource("6_yaehf")
 region_enabled = true
-region_rect = Rect2(136, 186, 32, 18)
+region_rect = Rect2(254, 22, 34, 28)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Props/Cupboard"]
-position = Vector2(-374.5, 31)
-shape = SubResource("RectangleShape2D_0cp0l")
-
-[node name="VendingMachine" type="StaticBody2D" parent="YSort/Props"]
-
-[node name="VendingMachine" type="Sprite2D" parent="YSort/Props/VendingMachine"]
-position = Vector2(-540, 26)
+[node name="Fridge" type="Sprite2D" parent="YSort/Props/RecRoom"]
+position = Vector2(-30, -6)
 texture = ExtResource("6_yaehf")
 region_enabled = true
-region_rect = Rect2(322, 86, 18, 32)
+region_rect = Rect2(356, 324, 18, 32)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Props/VendingMachine"]
-position = Vector2(-539.875, 27.5)
-shape = SubResource("RectangleShape2D_lswn8")
-
-[node name="VendingMachine2" type="StaticBody2D" parent="YSort/Props"]
-position = Vector2(17, 0)
-
-[node name="VendingMachine" type="Sprite2D" parent="YSort/Props/VendingMachine2"]
-position = Vector2(-540, 26)
+[node name="ArcadeMachine" type="Sprite2D" parent="YSort/Props/RecRoom"]
+position = Vector2(31, -6)
 texture = ExtResource("6_yaehf")
 region_enabled = true
-region_rect = Rect2(322, 86, 18, 32)
+region_rect = Rect2(50, 188, 18, 32)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Props/VendingMachine2"]
-position = Vector2(-539.875, 27.5)
-shape = SubResource("RectangleShape2D_lswn8")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Props/RecRoom"]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_uypp3")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="YSort/Props/RecRoom"]
+position = Vector2(-30, -7)
+shape = SubResource("RectangleShape2D_blkrb")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="YSort/Props/RecRoom"]
+position = Vector2(31, -6)
+shape = SubResource("RectangleShape2D_blkrb")
+
+[node name="Blackboard" type="Sprite2D" parent="YSort/Props/RecRoom"]
+position = Vector2(-62, -18)
+rotation = 3.14159
+scale = Vector2(1, -1)
+texture = ExtResource("6_yaehf")
+region_enabled = true
+region_rect = Rect2(136, 288, 32, 18)
+
+[node name="plant2" type="Sprite2D" parent="YSort/Props/RecRoom"]
+position = Vector2(-53, -2)
+texture = ExtResource("17_lswn8")
+region_enabled = true
+region_rect = Rect2(192, 722, 16, 24)
+
+[node name="plant1" type="Sprite2D" parent="YSort/Props/RecRoom"]
+position = Vector2(-72, -3)
+texture = ExtResource("5_4c57u")
+region_enabled = true
+region_rect = Rect2(176, 34, 16, 24)
+
+[node name="plant3" type="Sprite2D" parent="YSort/Props/RecRoom"]
+position = Vector2(-114, 113)
+texture = ExtResource("5_4c57u")
+region_enabled = true
+region_rect = Rect2(194, 36, 12, 22)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="YSort/Props/RecRoom"]
+position = Vector2(-72, -1)
+shape = SubResource("CircleShape2D_uypp3")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="YSort/Props/RecRoom"]
+position = Vector2(-53, 0)
+shape = SubResource("CircleShape2D_uypp3")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="YSort/Props/RecRoom"]
+position = Vector2(-114, 116)
+shape = SubResource("CircleShape2D_uypp3")
 
 [node name="TV" type="Sprite2D" parent="YSort/Props"]
 position = Vector2(-374, 21)
@@ -4045,15 +4211,11 @@ position = Vector2(302, 80)
 unique_name_in_owner = true
 position = Vector2(-472, 118)
 
-[node name="Enter_Room1" type="Area2D" parent="YSort"]
+[node name="Enter_Room1" parent="YSort" instance=ExtResource("25_qsp4k")]
 position = Vector2(85, 63)
-
-[node name="Door" type="Sprite2D" parent="YSort/Enter_Room1"]
-texture = ExtResource("9_kek77")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Enter_Room1"]
-position = Vector2(0, 2)
-shape = SubResource("RectangleShape2D_kek77")
+targetScene = "uid://g5w6gbptafqi"
+targetSpawn = "Spawn_Room1"
+roomName = "Room 1"
 
 [node name="Spawn_Main1" type="Marker2D" parent="YSort/Enter_Room1"]
 position = Vector2(0, 20)

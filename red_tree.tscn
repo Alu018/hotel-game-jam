@@ -9,16 +9,16 @@ height = 22.0
 
 [node name="RedTree" instance=ExtResource("1_eahoq")]
 
+[node name="AnimatedSprite2D" parent="." index="0"]
+visible = false
+autoplay = ""
+
 [node name="Tree" type="Sprite2D" parent="." index="1"]
 position = Vector2(0, -11)
 texture = ExtResource("2_bf1k0")
 region_enabled = true
 region_rect = Rect2(68, 4, 24, 40)
 
-[node name="CollisionShape2D" parent="." index="2"]
+[node name="CollisionShape2D" parent="." index="4"]
 position = Vector2(0, -9)
 shape = SubResource("CapsuleShape2D_bf1k0")
-
-[node name="AnimatedSprite2D" parent="." index="3"]
-visible = false
-autoplay = ""

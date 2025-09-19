@@ -14,7 +14,8 @@ var flags := {
 	"hasPrintedLabel": 0,
 	"GaveGlasses": 0,
 	"GotPaperClue1": 0,
-	"GotPaperClue2": 0
+	"GotPaperClue2": 0,
+	"hasApprovedCellarAccess": 0
 }
 
 # Example: advance the quest

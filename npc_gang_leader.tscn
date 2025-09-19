@@ -1,8 +1,9 @@
-[gd_scene load_steps=28 format=3 uid="uid://b2xhngk0bipcl"]
+[gd_scene load_steps=29 format=3 uid="uid://b2xhngk0bipcl"]
 
 [ext_resource type="Script" uid="uid://cynm46x2vnfem" path="res://npc_gang_leader_walk.gd" id="1_jd20w"]
 [ext_resource type="Texture2D" uid="uid://d0r0in66255yc" path="res://Fantasy-UI.png" id="3_olrsh"]
 [ext_resource type="Texture2D" uid="uid://cbfiy87xncbgj" path="res://Hana Caraka - Base Character [sample]/idle.png" id="4_yj8hb"]
+[ext_resource type="FontFile" uid="uid://bu7js3732vtji" path="res://Pixuf.ttf" id="5_i2bij"]
 [ext_resource type="Texture2D" uid="uid://fjguoer2wi5u" path="res://Hana Caraka - Base Character [sample]/walk.png" id="5_olak5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v7lw1"]
@@ -191,3 +192,25 @@ autoplay = "idle_down"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 shape = SubResource("CircleShape2D_ideak")
 debug_color = Color(0.715642, 0.471716, 0.286629, 0.42)
+
+[node name="InteractText" type="Panel" parent="."]
+offset_left = -40.0
+offset_bottom = 13.0
+pivot_offset = Vector2(-16, -5)
+
+[node name="LabelText" type="Label" parent="InteractText"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -13.0
+offset_top = -4.0
+offset_right = 13.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_i2bij")
+theme_override_font_sizes/font_size = 8
+text = "Interact"

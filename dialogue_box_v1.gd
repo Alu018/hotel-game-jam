@@ -4,12 +4,12 @@ signal dialogue_finished
 
 # dialogueLines is array of dictionaries
 var dialogueLines = []
-var currentLine = 0
+var currentLine = -1
 var isActive = false
 var npcName: String = ""
 var isTalking: bool = false
 
-var typing_speed = 0.02  # Time between each character (adjust for speed)
+var typing_speed = 0.03  # Time between each character (adjust for speed)
 var is_typing = false    # Track if text is currently being typed
 var full_text = ""       # Store the complete text to display
 var current_char_index = 0  # Track current character position
@@ -164,25 +164,25 @@ var wine_petrus_noir = {
 
 @onready var text_concierge_q2 = [
 	{"text": "Oh hello, patron M. What can I do for you?", "choices": [
-		{"text": "Wine cellar?", "next_line": 1}
+		{"text": "Wine?", "next_line": 1}
 	]},
 	
 	{"text": "Ah, yes... our valuable wine collection at the hotel.", "choices": []},
 	{"text": "If I remember correctly, you've stored a number of rare wines there yourself.", "choices": []},
-	{"text": "...oh? You'd like to access it? That's no trouble at all. You'll just need your cellar key.", "choices": [
+	{"text": "...oh? You'd like to access it? That's no trouble at all. You'll just have to provide your personal cellar key.", "choices": [
 		{"text": "Cellar key?", "next_line": 4}
 	]},
 	
 	{"text": "Well... yes. I'm so sorry, I thought you remembered?", "choices": []},
-	{"text": "Since the wine cellar here stores such a valuable collection, we require each guest to have their own personal key.", "choices": []},
-	{"text": "On top of that, I have to approve access to the cellar from the hotel's side through our system.", "choices": []},
-	{"text": "If you are missing your key or any other items, your luggage just arrived this morning.", "choices": []},
+	{"text": "Since the wine cellar here stores such a valuable collection, it requires two keys to open.", "choices": []},
+	{"text": "One key is held by the hotel staff. The other is held by the patron who keeps the wine here - in this case, you.", "choices": []},
+	{"text": "If you are missing any items, your luggage just arrived this morning.", "choices": []},
 	{"text": "I had our bellhop bring it to your room, so you may want to check there.", "choices": []},
 ]
 
 @onready var text_concierge_q3 = [
 	{"text": "Your suitcase just arrived and should be in your room.", "choices": []},
-	{"text": "And as I mentioned, for the wine cellar you'll need your personal cellar key.", "choices": []},
+	{"text": "And as I mentioned, for the wine cellar you'll need your personal cellar key as well.", "choices": []},
 	{"text": "Perhaps you stored it in your room safe?", "choices": []}
 ]
 @onready var text_concierge_default = [
@@ -202,17 +202,6 @@ var wine_petrus_noir = {
 ]
 @onready var text_concierge_q4_phoneAsked = [
 	{"text": "You can use the phone in Room 4. However, do be quick as we need to prepare the room for our next guest.", "choices": []}
-]
-@onready var text_concierge_q5 = [
-	{"text": "Ah... Patron M. A delight as always. How can I assist you?", "choices": [
-		{"text": "I have the key", "next_line": 1}
-	]},
-	
-	{"text": "Ah! The key to the wine cellar, of course. Glad you found it.", "choices": []},
-	{"text": "I've just approved the cellar to be unlocked through our system. Now you should be able to open it with your personal key.", "choices": []},
-]
-@onready var text_concierge_q5_cellarUnlocked = [
-	{"text": "The wine cellar is approved to be unlocked by you. Please enjoy your collection of fine wines.", "choices": []}
 ]
 
 @onready var text_greeter = [
@@ -330,9 +319,7 @@ var wine_petrus_noir = {
 @onready var text_associate_q4_1 = [
 	{"text": "What the- you're not M. Who the hell are you?", "choices": []},
 	{"text": "Wait a sec... are you working for that idiot too?", "choices": []},
-	{"text": "Y'know what? I don't even care. This has been one of the most exhausting jobs I’ve ever done.", "choices": []},
-	{"text": "M gave me this, without any context. Told me to hold on to it until I get a call.", "choices": []},
-	{"text": "Just take it, alright?", "choices": []},
+	{"text": "Y'know what? I don't even care. This has been one of the most exhausting jobs I’ve ever done. Pass this along to M and get outta here.", "choices": []},
 ]
 @onready var text_associate_q4_2 = [
 	{"text": "I've done a lotta jobs in my time... but this one takes the cake.", "choices": []},
@@ -347,8 +334,7 @@ var wine_petrus_noir = {
 # ----- NAMES ------ 
 @onready var interactableNames = {
 	"GangLeader": "Mystery Man",
-	"BellhopL": "Bellhop",
-	"BellhopR": "Bellhop",
+	"Bellhop2": "Bellhop",
 	"Sign_MainRight": "Sign",
 	"Sign_MainLeft": "Sign",
 	"Sign_MainUp": "Sign",
@@ -361,7 +347,6 @@ var wine_petrus_noir = {
 	"RedTree": "Tree",
 	"PlayerBlocker_Room8": "???",
 	"WineCellarDoor": "[Cellar Door]",
-	"WinePetrusNoir": "Player [with wine]",
 	"CourtyardPerson": "Hotel Guest",
 	"Room2_Dad": "Hotel Guest",
 	"Room2_Mom": "Hotel Guest"
@@ -475,7 +460,7 @@ var wine_petrus_noir = {
 @onready var player = %Player
 
 # UI for choice buttons
-#@onready var choiceContainer = $Panel/ChoiceContainer
+@onready var choiceContainer = $Panel/ChoiceContainer
 @onready var choiceButtonScene = preload("res://dialogue_option_button.tscn") # small Button scene
 
 func _ready():
@@ -492,7 +477,7 @@ func start_dialogue(npc_node: Node2D, lines: Array, player_ref):
 	if !isTalking: 
 		isTalking = true
 		dialogueLines = lines
-		currentLine = 0
+		currentLine = -1
 		isActive = true
 		visible = true
 		player = player_ref
@@ -514,8 +499,8 @@ func start_dialogue(npc_node: Node2D, lines: Array, player_ref):
 
 func _show_line():
 	# Clear previous dialogue choice options
-	#for child in choiceContainer.get_children():
-		#child.queue_free()
+	for child in choiceContainer.get_children():
+		child.queue_free()
 
 	if currentLine >= dialogueLines.size():
 		_end_dialogue()
@@ -523,22 +508,16 @@ func _show_line():
 
 	var line_data = dialogueLines[currentLine]
 
-	# CHANGED: Store full text and start typing effect
-	full_text = npcName + ": " + line_data.text
-	current_char_index = 0
-	is_typing = true
-	typing_timer = 0.0
-	$Panel/Label.text = ""  # Start with empty text
+	# Show text
+	$Panel/Label.text = npcName + ": " + line_data.text
 
-	# Show choices if any (but don't allow interaction until typing is done)
+	# Show choices if any
 	if line_data.has("choices") and line_data.choices.size() > 0:
 		isActive = false  # block linear advancement while choices exist
 		for choice in line_data.choices:
 			var btn = choiceButtonScene.instantiate()
 			btn.text = choice.text
 			btn.pressed.connect(func(): _on_choice_selected(choice, btn))
-			btn.disabled = true  # CHANGED: Disable buttons during typing
-			btn.visible = false
 			$Panel.add_child(btn)
 			
 			# Bottom-right alignment
@@ -551,39 +530,13 @@ func _show_line():
 			btn.offset_bottom = -70  # 10px from bottom
 			btn.offset_left = -btn.size.x
 			btn.offset_top = -btn.size.y
+			
+			#var btn = Button.new()
+			#btn.text = choice.text
+			#btn.pressed.connect(func(): _on_choice_selected(choice))
+			#add_child(btn)
 	else:
-		isActive = false  # CHANGED: Don't allow advancement until typing is done
-		
-func _handle_typing(delta):
-	if not is_typing:
-		return
-		
-	typing_timer += delta
-	
-	if typing_timer >= typing_speed:
-		typing_timer = 0.0
-		current_char_index += 1
-		
-		# Update the displayed text
-		$Panel/Label.text = full_text.substr(0, current_char_index)
-		
-		# Check if we've displayed all characters
-		if current_char_index >= full_text.length():
-			is_typing = false
-			_on_typing_finished()
-
-# NEW FUNCTION - Called when typing animation finishes
-func _on_typing_finished():
-	# Re-enable choice buttons if they exist
-	for child in $Panel.get_children():
-		if child is Button:
-			child.disabled = false
-			child.visible = true
-	
-	# Allow advancement if no choices
-	var line_data = dialogueLines[currentLine]
-	if not (line_data.has("choices") and line_data.choices.size() > 0):
-		isActive = true
+		isActive = true  # allow interact to advance
 
 
 func _on_choice_selected(choice: Dictionary, btn: Button):
@@ -598,20 +551,7 @@ func _on_choice_selected(choice: Dictionary, btn: Button):
 	_show_line()
 
 func _process(delta):
-	# Handle typing animation
-	_handle_typing(delta)
-	
-	# Allow skipping typing by pressing interact
-	if is_typing and Input.is_action_just_pressed("interact"):
-		# Skip to end of typing
-		current_char_index = full_text.length()
-		$Panel/Label.text = full_text
-		is_typing = false
-		_on_typing_finished()
-		return
-	
-	# Original advancement logic (only when not typing)
-	if isActive and not is_typing and Input.is_action_just_pressed("interact"):
+	if isActive and Input.is_action_just_pressed("interact"):
 		print("currLine before:", currentLine)
 		currentLine += 1
 		_show_line()
@@ -627,7 +567,7 @@ func _end_dialogue():
 	visible = false
 	isActive = false
 	isTalking = false
-	currentLine = 0
+	currentLine = -1
 	if player:
 		player.canMove = true
 	get_parent().call_deferred("_on_dialogue_ended")
@@ -665,10 +605,7 @@ func _end_dialogue():
 		"Tree":
 			if GameState.quest == 4:
 				Inventory.add_item(paper_clue_2)
-		"[Cellar Door]":
-			if GameState.quest == 5:
-				GameState.advance_quest()
-		"Player [with wine]":
+		"WinePetrusNoir":
 			if GameState.quest == 6:
 				GameState.advance_quest()
 				Inventory.add_item(wine_petrus_noir)
@@ -714,12 +651,6 @@ func _on_concierge_interact(npc_node):
 					GameState.set_flag("hasAskedConciergePhone", 1)
 				else:
 					lines_to_show = text_concierge_q4_phoneAsked
-		5:
-			if GameState.get_flag("hasApprovedCellarAccess") == false:
-				lines_to_show = text_concierge_q5
-				GameState.set_flag("hasApprovedCellarAccess", 1)
-			else:
-				lines_to_show = text_concierge_q5_cellarUnlocked
 		_:
 			lines_to_show = text_concierge_default
 	start_dialogue(npc_node, lines_to_show, player)
@@ -875,6 +806,7 @@ func _on_wine_cellar_door_interact(npc_node):
 	match GameState.quest:
 		5:
 			start_dialogue(npc_node, text_wineCellar_q5, player)
+			GameState.advance_quest()
 		2:
 			start_dialogue(npc_node, text_wineCellar_q2, player)
 		1:
@@ -951,9 +883,6 @@ func _on_courtyard_person_interact(npc_node):
 	{"text": "Wait... does this place even have breakfast?", "choices": []},
 	{"text": "It better for how much I'm paying.", "choices": []},
 ]
-@onready var text_room2_kid = [
-	{"text": "Mom! Mom! Look at me!", "choices": []},
-]
 
 func _on_room_2_dad_interact(npc_node: Variant) -> void:
 	start_dialogue(npc_node, text_room2_dad, player)
@@ -964,8 +893,4 @@ func _on_room_2_mom_interact(npc_node: Variant) -> void:
 
 
 func _on_room_2_kid_interact(npc_node: Variant) -> void:
-	start_dialogue(npc_node, text_room2_kid, player)
-
-
-func _on_player_bed_interact(npc_node: Variant) -> void:
 	pass # Replace with function body.

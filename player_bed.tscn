@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1hyrotyryf66"]
+
+[ext_resource type="Texture2D" uid="uid://0x3qe1rwwx1p" path="res://Hana Caraka - Fantasy Interior [sample]/Props/props - all.png" id="1_uaxvu"]
+[ext_resource type="PackedScene" uid="uid://cbyi2vqvli5q4" path="res://interactable.tscn" id="1_vdrdf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vdrdf"]
+size = Vector2(14, 19)
+
+[node name="PlayerBed" instance=ExtResource("1_vdrdf")]
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+visible = false
+
+[node name="Bed" type="Sprite2D" parent="." index="1"]
+position = Vector2(0, 3)
+texture = ExtResource("1_uaxvu")
+region_enabled = true
+region_rect = Rect2(54, 4, 20, 32)
+
+[node name="CollisionShape2D" parent="." index="4"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_vdrdf")
+
+[node name="InteractionArea" parent="." index="5"]
+position = Vector2(0, 3)

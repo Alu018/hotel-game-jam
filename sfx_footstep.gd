@@ -1,7 +1,5 @@
 extends AudioStreamPlayer
 
-@onready var sfx = $AudioStreamPlayer
-
 var footstepSounds = [
 	preload("res://sfx/Concrete1.wav"),
 	preload("res://sfx/Concrete2.wav")
