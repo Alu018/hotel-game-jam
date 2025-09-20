@@ -51,11 +51,11 @@ var business_card = {
 
 var picture = {
 	"name": "picture",
-	"title": "Picture of ???",
+	"title": "Picture of tree",
 	"icon": preload("res://inventory/picture_clue.png"),
-	"modalIcon": preload("res://inventory/picture_clue.png"),
+	"modalIcon": preload("res://inventory/modal-pics/modalPic-tree.png"),
 	"description": "Inspect",
-	"long_description": "A picture of what seems to be an outdoor area."
+	"long_description": "A picture of what seems to be a tree in an outdoor area."
 }
 
 var glasses = {
@@ -686,6 +686,10 @@ func _end_dialogue():
 				GameState.advance_quest()
 				
 			start_dialogue(node_journal, text_m_journal, player)
+		"PlayerBed":
+#			show the end black screen
+			%EndScreenPanel.visible = true
+			%Player.canMove = false
 
 # ---------------- NPC Interactions ----------------
 func _on_concierge_interact(npc_node):
@@ -947,12 +951,12 @@ func _on_courtyard_person_interact(npc_node):
 	{"text": "It better for how much I'm paying.", "choices": []},
 ]
 @onready var text_room2_mom = [
-	{"text": "I can't wait to eat breakfast. Free, unlimited breakfasts are the best part of hotels.", "choices": []},
-	{"text": "Wait... does this place even have breakfast?", "choices": []},
-	{"text": "It better for how much I'm paying.", "choices": []},
+	{"text": "... 8... 9... 10 (exhales) *whooooooo*.", "choices": []},
+	{"text": "I'm taking a break over here. My kid is driving me absolutely insane.", "choices": []}
 ]
 @onready var text_room2_kid = [
-	{"text": "Mom! Mom! Look at me!", "choices": []},
+	{"text": "Mommy and daddy told me to stop bouncing on the bed. They said it was really annoying.", "choices": []},
+	{"text": "What else are you supposed to do on a bed though other than bouncing and sleeping?", "choices": []}
 ]
 
 func _on_room_2_dad_interact(npc_node: Variant) -> void:
@@ -966,6 +970,14 @@ func _on_room_2_mom_interact(npc_node: Variant) -> void:
 func _on_room_2_kid_interact(npc_node: Variant) -> void:
 	start_dialogue(npc_node, text_room2_kid, player)
 
+@onready var text_player_bed = [
+	{"text": "It's been a long day... time to get some rest.", "choices": []},
+	{"text": "Go to sleep?", "choices": [
+		{"text": "Yes", "next_line": 2}
+	]},
+	
+	{"text": "(You settle in bed and drift off to sleep.)", "choices": []},
+]
 
-func _on_player_bed_interact(npc_node: Variant) -> void:
-	pass # Replace with function body.
+func _on_player_bed_interact(npc_node):
+	start_dialogue(npc_node, text_player_bed, player)

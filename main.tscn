@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=4 uid="uid://bwni2ngdfoydd"]
+[gd_scene load_steps=96 format=4 uid="uid://bwni2ngdfoydd"]
 
 [ext_resource type="Script" uid="uid://dbi5eu58hbev0" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://c1c8yhsy4l52h" path="res://player.tscn" id="1_ig7tw"]
@@ -16,7 +16,6 @@
 [ext_resource type="PackedScene" uid="uid://k83acxp6fl16" path="res://main_sign_right.tscn" id="7_074og"]
 [ext_resource type="Texture2D" uid="uid://xv8jtt2ah561" path="res://Hana Caraka - Topdown Tileset [sample]/Tileset/dirt wall.png" id="7_lswn8"]
 [ext_resource type="PackedScene" uid="uid://b41wa8s2ywm4y" path="res://dialogue_box.tscn" id="8_5vw27"]
-[ext_resource type="Texture2D" uid="uid://cclcrogrd65dm" path="res://Hana Caraka - Fantasy Interior [sample]/Props/door.png" id="9_kek77"]
 [ext_resource type="Texture2D" uid="uid://dec15wl7rq5qq" path="res://Cute_Fantasy_Free/Outdoor decoration/Outdoor_Decor_Free.png" id="9_seu75"]
 [ext_resource type="Texture2D" uid="uid://dcio7imge6s2w" path="res://Hana Caraka - Topdown Tileset [sample]/Tileset/Seasonal/spring.png" id="10_4k2k6"]
 [ext_resource type="PackedScene" uid="uid://dm54dstgvvaed" path="res://npc_greeter.tscn" id="10_efxa6"]
@@ -3637,8 +3636,6 @@ size = Vector2(11, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kq58d"]
 size = Vector2(92, 11)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kek77"]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hrvbo"]
 size = Vector2(191, 157)
 
@@ -4247,28 +4244,20 @@ roomName = "Room 4"
 [node name="Spawn_Main4" type="Marker2D" parent="YSort/Enter_Room4"]
 position = Vector2(0, 25)
 
-[node name="Enter_Room5" type="Area2D" parent="YSort"]
+[node name="Enter_Room5" parent="YSort" instance=ExtResource("25_qsp4k")]
 position = Vector2(73, -209)
-
-[node name="Door" type="Sprite2D" parent="YSort/Enter_Room5"]
-texture = ExtResource("9_kek77")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Enter_Room5"]
-position = Vector2(0, 6)
-shape = SubResource("RectangleShape2D_kek77")
+targetScene = "uid://tes3u0w2iyfl"
+targetSpawn = "Spawn_Room5"
+roomName = "Room 5"
 
 [node name="Spawn_Main5" type="Marker2D" parent="YSort/Enter_Room5"]
 position = Vector2(0, 25)
 
-[node name="Enter_Room6" type="Area2D" parent="YSort"]
+[node name="Enter_Room6" parent="YSort" instance=ExtResource("25_qsp4k")]
 position = Vector2(407, -209)
-
-[node name="Door" type="Sprite2D" parent="YSort/Enter_Room6"]
-texture = ExtResource("9_kek77")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Enter_Room6"]
-position = Vector2(0, 6)
-shape = SubResource("RectangleShape2D_kek77")
+targetScene = "uid://bi6f0vuhrbwmw"
+targetSpawn = "Spawn_Room6"
+roomName = "Room 6"
 
 [node name="Spawn_Main6" type="Marker2D" parent="YSort/Enter_Room6"]
 position = Vector2(0, 25)
@@ -4298,15 +4287,11 @@ roomName = "Room 9"
 [node name="Spawn_Main9" type="Marker2D" parent="YSort/Enter_Room9"]
 position = Vector2(0, 20)
 
-[node name="Enter_Room10" type="Area2D" parent="YSort"]
+[node name="Enter_Room10" parent="YSort" instance=ExtResource("25_qsp4k")]
 position = Vector2(409, 63)
-
-[node name="Door" type="Sprite2D" parent="YSort/Enter_Room10"]
-texture = ExtResource("9_kek77")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/Enter_Room10"]
-position = Vector2(0, 6)
-shape = SubResource("RectangleShape2D_kek77")
+targetScene = "uid://cvu8v1lva4htn"
+targetSpawn = "Spawn_Room10"
+roomName = "Room 10"
 
 [node name="Spawn_Main10" type="Marker2D" parent="YSort/Enter_Room10"]
 position = Vector2(0, 25)

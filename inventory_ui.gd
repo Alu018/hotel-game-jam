@@ -77,7 +77,7 @@ func open_item_modal(item):
 	modal_item_icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	
 	# Set a good size for the modal icon (much larger than inventory)
-	modal_item_icon.custom_minimum_size = Vector2(16, 16)
+	modal_item_icon.custom_minimum_size = Vector2(64, 64)
 	
 	modal_title.text = item.title if "name" in item else "Item"
 	
