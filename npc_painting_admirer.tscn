@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://bd64t7cf40mha"]
+
+[ext_resource type="PackedScene" uid="uid://cbyi2vqvli5q4" path="res://interactable.tscn" id="1_s5282"]
+
+[node name="PaintingAdmirer" instance=ExtResource("1_s5282")]

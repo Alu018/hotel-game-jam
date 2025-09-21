@@ -364,7 +364,10 @@ var wine_petrus_noir = {
 	"WinePetrusNoir": "Player [with wine]",
 	"CourtyardPerson": "Hotel Guest",
 	"Room2_Dad": "Hotel Guest",
-	"Room2_Mom": "Hotel Guest"
+	"Room2_Mom": "Hotel Guest",
+	"PaintingAdmirer": "Hotel Guest",
+	"BathroomGuy": "Hotel Guest",
+	"PlayerBed": "Bed"
 }
 
 # ------ ITEMS -------
@@ -612,16 +615,15 @@ func _process(delta):
 	
 	# Original advancement logic (only when not typing)
 	if isActive and not is_typing and Input.is_action_just_pressed("interact"):
-		print("currLine before:", currentLine)
 		currentLine += 1
 		_show_line()
-		print("currLine after:", currentLine)
 		
 #	DEBUG
 	if Input.is_action_just_pressed("debug_addItems"):
 		Inventory.add_item(flash_drive)
 		Inventory.add_item(business_card)
 		Inventory.add_item(picture)
+		Inventory.add_item(glasses)
 
 func _end_dialogue():
 	visible = false
@@ -687,7 +689,7 @@ func _end_dialogue():
 				
 			start_dialogue(node_journal, text_m_journal, player)
 		"PlayerBed":
-#			show the end black screen
+	#		show the end black screen
 			%EndScreenPanel.visible = true
 			%Player.canMove = false
 
@@ -980,4 +982,21 @@ func _on_room_2_kid_interact(npc_node: Variant) -> void:
 ]
 
 func _on_player_bed_interact(npc_node):
-	start_dialogue(npc_node, text_player_bed, player)
+	if GameState.quest == 8:
+		start_dialogue(npc_node, text_player_bed, player)
+
+@onready var text_painting_admirer = [
+	{"text": "Hmmm... what a curious painting. It evokes such fear in the viewer.", "choices": []},
+	{"text": "I wonder what was going through the artist's mind while drawing this.", "choices": []}
+]
+
+func _on_painting_admirer_interact(npc_node: Variant) -> void:
+	start_dialogue(npc_node, text_painting_admirer, player)
+
+@onready var text_bathroom_guy = [
+	{"text": "Woah! Give a guy some privacy, will ya?", "choices": []},
+	{"text": "Geez... can't even take a nice bath in peace these days.", "choices": []}
+]
+
+func _on_bathroom_guy_interact(npc_node: Variant) -> void:
+	start_dialogue(npc_node, text_bathroom_guy, player)

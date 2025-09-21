@@ -1,9 +1,47 @@
-[gd_scene load_steps=2 format=3 uid="uid://wckafepb3dav"]
+[gd_scene load_steps=8 format=3 uid="uid://wckafepb3dav"]
 
 [ext_resource type="PackedScene" uid="uid://cbyi2vqvli5q4" path="res://interactable.tscn" id="1_772lt"]
+[ext_resource type="Texture2D" uid="uid://c2762v42juub5" path="res://npc-spritesheets/bellhop-idle-down.png" id="2_ahuwx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_esr8p"]
+atlas = ExtResource("2_ahuwx")
+region = Rect2(0, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_joa3u"]
+atlas = ExtResource("2_ahuwx")
+region = Rect2(80, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v5pdy"]
+atlas = ExtResource("2_ahuwx")
+region = Rect2(160, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pr2cc"]
+atlas = ExtResource("2_ahuwx")
+region = Rect2(240, 0, 80, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cad1y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_esr8p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_joa3u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v5pdy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pr2cc")
+}],
+"loop": true,
+"name": &"idle_down",
+"speed": 4.0
+}]
 
 [node name="Bellhop" instance=ExtResource("1_772lt")]
 
-[node name="AnimatedSprite2D" parent="." index="2"]
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_cad1y")
 animation = &"idle_down"
 autoplay = "idle_down"

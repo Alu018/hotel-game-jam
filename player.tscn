@@ -303,9 +303,31 @@ position_smoothing_speed = 12.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_4flbx")
-animation = &"idle_side"
-frame_progress = 0.996681
+animation = &"idle_down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
 shape = SubResource("CircleShape2D_4flbx")
+
+[node name="SprintBarContainer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 12.0
+offset_bottom = 2.0
+
+[node name="SprintBarBackground" type="ColorRect" parent="SprintBarContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.830335, 0.830335, 0.830335, 1)
+
+[node name="SprintBarFill" type="ColorRect" parent="SprintBarContainer/SprintBarBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dmdx5nb866uiw" path="res://sierrassets furniture pack/furniture/furniture spritesheet.png" id="11_cviq0"]
 [ext_resource type="PackedScene" uid="uid://2x7annbd7e0" path="res://obstacles/table.tscn" id="12_6hgwk"]
 [ext_resource type="PackedScene" uid="uid://c1c8yhsy4l52h" path="res://player.tscn" id="13_h5qqs"]
-[ext_resource type="PackedScene" uid="uid://btnvmaygotwi7" path="res://glasses.tscn" id="14_0pwm5"]
+[ext_resource type="PackedScene" uid="uid://hucvmbqq1ba8" path="res://npc_bathroom_guy.tscn" id="14_vx7jm"]
 [ext_resource type="Script" uid="uid://d0xwfs7lmnnfb" path="res://room_transition.gd" id="15_n7ad1"]
 [ext_resource type="PackedScene" uid="uid://b41wa8s2ywm4y" path="res://dialogue_box.tscn" id="16_8nysc"]
 
@@ -1686,13 +1686,13 @@ tile_map_data = PackedByteArray("AAAMAAMAAAABAAAAAAANAAMAAAABAAAAAAAOAAMAAAABAAA
 tile_set = SubResource("TileSet_r63ts")
 
 [node name="Painting" type="Sprite2D" parent="."]
-position = Vector2(262, 78)
+position = Vector2(283, 79)
 texture = ExtResource("11_cviq0")
 region_enabled = true
-region_rect = Rect2(408, 254, 16, 18)
+region_rect = Rect2(560, 204, 34, 16)
 
 [node name="Table" parent="." instance=ExtResource("12_6hgwk")]
-position = Vector2(193, 97)
+position = Vector2(222, 97)
 
 [node name="Stool" type="Sprite2D" parent="."]
 position = Vector2(287, 184)
@@ -1705,6 +1705,12 @@ position = Vector2(265, 199)
 texture = ExtResource("10_k3dfm")
 region_enabled = true
 region_rect = Rect2(52, 48, 8, 10)
+
+[node name="Window" type="Sprite2D" parent="."]
+position = Vector2(250, 79)
+texture = ExtResource("10_k3dfm")
+region_enabled = true
+region_rect = Rect2(152, 104, 16, 16)
 
 [node name="YSort" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -1723,43 +1729,57 @@ position = Vector2(292, 101)
 shape = SubResource("RectangleShape2D_i2g5o")
 
 [node name="Bookshelf" type="Sprite2D" parent="YSort/Bedroom"]
-position = Vector2(221, 89)
+position = Vector2(191, 89)
 texture = ExtResource("10_k3dfm")
 region_enabled = true
 region_rect = Rect2(146, 8, 20, 30)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="YSort/Bedroom"]
-position = Vector2(221, 90)
+position = Vector2(191, 90)
 shape = SubResource("RectangleShape2D_hgtg3")
 
 [node name="Armchair" type="Sprite2D" parent="YSort/Bedroom"]
-position = Vector2(184, 196)
+position = Vector2(296, 163)
+scale = Vector2(-1, 1)
 texture = ExtResource("10_k3dfm")
 region_enabled = true
 region_rect = Rect2(0, 62, 14, 20)
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="YSort/Bedroom"]
-position = Vector2(185, 197)
+position = Vector2(297, 164)
+scale = Vector2(-1, 1)
 shape = SubResource("RectangleShape2D_26usr")
 
 [node name="Armchair2" type="Sprite2D" parent="YSort/Bedroom"]
-position = Vector2(184, 181)
+position = Vector2(296, 148)
+scale = Vector2(-1, 1)
 texture = ExtResource("10_k3dfm")
 region_enabled = true
 region_rect = Rect2(0, 62, 14, 20)
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="YSort/Bedroom"]
-position = Vector2(185, 182)
+position = Vector2(297, 149)
+scale = Vector2(-1, 1)
 shape = SubResource("RectangleShape2D_26usr")
 
 [node name="Plant" type="Sprite2D" parent="YSort/Bedroom"]
-position = Vector2(261, 94)
+position = Vector2(250, 93)
 texture = ExtResource("10_k3dfm")
 region_enabled = true
 region_rect = Rect2(176, 34, 16, 24)
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="YSort/Bedroom"]
-position = Vector2(261, 99)
+position = Vector2(250, 98)
+shape = SubResource("CircleShape2D_xwr4s")
+
+[node name="Plant2" type="Sprite2D" parent="YSort/Bedroom"]
+position = Vector2(184, 194)
+texture = ExtResource("10_k3dfm")
+region_enabled = true
+region_rect = Rect2(194, 36, 12, 22)
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="YSort/Bedroom"]
+position = Vector2(184, 199)
 shape = SubResource("CircleShape2D_xwr4s")
 
 [node name="Table" type="Sprite2D" parent="YSort/Bedroom"]
@@ -1791,6 +1811,12 @@ region_rect = Rect2(66, 48, 12, 16)
 [node name="CollisionShape2D8" type="CollisionShape2D" parent="YSort/Bedroom"]
 position = Vector2(295, 135)
 shape = SubResource("RectangleShape2D_qy8wk")
+
+[node name="Microwave" type="Sprite2D" parent="YSort/Bedroom"]
+position = Vector2(222, 90)
+texture = ExtResource("11_cviq0")
+region_enabled = true
+region_rect = Rect2(152, 306, 18, 16)
 
 [node name="Bathroom" type="StaticBody2D" parent="YSort"]
 y_sort_enabled = true
@@ -1835,9 +1861,8 @@ shape = SubResource("RectangleShape2D_h8my2")
 unique_name_in_owner = true
 position = Vector2(239, 203)
 
-[node name="Glasses" parent="YSort" instance=ExtResource("14_0pwm5")]
-unique_name_in_owner = true
-position = Vector2(193, 94)
+[node name="BathroomGuy" parent="." instance=ExtResource("14_vx7jm")]
+position = Vector2(96, 161)
 
 [node name="TablePlant" type="Sprite2D" parent="."]
 position = Vector2(287, 195)
@@ -1863,4 +1888,4 @@ debug_color = Color(0.802128, 0.41611, 0.127758, 0.42)
 unique_name_in_owner = true
 position = Vector2(0, -7)
 
-[connection signal="interact" from="YSort/Glasses" to="DialogueBox" method="_on_glasses_interact"]
+[connection signal="interact" from="BathroomGuy" to="DialogueBox" method="_on_bathroom_guy_interact"]

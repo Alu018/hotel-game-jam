@@ -1,9 +1,49 @@
-[gd_scene load_steps=2 format=3 uid="uid://y87xdt46m3gk"]
+[gd_scene load_steps=8 format=3 uid="uid://y87xdt46m3gk"]
 
 [ext_resource type="PackedScene" uid="uid://cbyi2vqvli5q4" path="res://interactable.tscn" id="1_x2r1f"]
+[ext_resource type="Texture2D" uid="uid://bp61un7f1ibkr" path="res://npc-spritesheets/associate-idle-down.png" id="2_dv7m5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvec5"]
+atlas = ExtResource("2_dv7m5")
+region = Rect2(0, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0o7vj"]
+atlas = ExtResource("2_dv7m5")
+region = Rect2(80, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lo45k"]
+atlas = ExtResource("2_dv7m5")
+region = Rect2(160, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jdk4g"]
+atlas = ExtResource("2_dv7m5")
+region = Rect2(240, 0, 80, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_285df"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kvec5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0o7vj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lo45k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jdk4g")
+}],
+"loop": true,
+"name": &"idle_down",
+"speed": 4.0
+}]
 
 [node name="Associate" instance=ExtResource("1_x2r1f")]
 
-[node name="AnimatedSprite2D" parent="." index="2"]
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_285df")
 animation = &"idle_down"
 autoplay = "idle_down"
+frame = 3
+frame_progress = 0.465908

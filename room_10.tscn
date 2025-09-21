@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=4 uid="uid://cvu8v1lva4htn"]
+[gd_scene load_steps=38 format=4 uid="uid://cvu8v1lva4htn"]
 
 [ext_resource type="Texture2D" uid="uid://cxth0v2wbhc1a" path="res://Hana Caraka - Fantasy Interior [sample]/Wall/Wall - all.png" id="1_ivi40"]
 [ext_resource type="Texture2D" uid="uid://ixfi3vh335d" path="res://Modern tiles_Free/Interiors_free/16x16/Interiors_free_16x16.png" id="2_bop57"]
@@ -13,7 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://dmdx5nb866uiw" path="res://sierrassets furniture pack/furniture/furniture spritesheet.png" id="11_211bc"]
 [ext_resource type="PackedScene" uid="uid://2x7annbd7e0" path="res://obstacles/table.tscn" id="12_amsk5"]
 [ext_resource type="PackedScene" uid="uid://c1c8yhsy4l52h" path="res://player.tscn" id="13_1lfih"]
-[ext_resource type="PackedScene" uid="uid://btnvmaygotwi7" path="res://glasses.tscn" id="14_j4u1q"]
 [ext_resource type="Script" uid="uid://d0xwfs7lmnnfb" path="res://room_transition.gd" id="15_lfoaf"]
 [ext_resource type="PackedScene" uid="uid://b41wa8s2ywm4y" path="res://dialogue_box.tscn" id="16_werra"]
 
@@ -1835,10 +1834,6 @@ shape = SubResource("RectangleShape2D_h8my2")
 unique_name_in_owner = true
 position = Vector2(239, 203)
 
-[node name="Glasses" parent="YSort" instance=ExtResource("14_j4u1q")]
-unique_name_in_owner = true
-position = Vector2(193, 94)
-
 [node name="TablePlant" type="Sprite2D" parent="."]
 position = Vector2(287, 195)
 texture = ExtResource("10_ug0u2")
@@ -1862,5 +1857,3 @@ debug_color = Color(0.802128, 0.41611, 0.127758, 0.42)
 [node name="DialogueBox" parent="." instance=ExtResource("16_werra")]
 unique_name_in_owner = true
 position = Vector2(0, -7)
-
-[connection signal="interact" from="YSort/Glasses" to="DialogueBox" method="_on_glasses_interact"]

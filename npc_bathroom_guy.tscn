@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://hucvmbqq1ba8"]
+
+[ext_resource type="PackedScene" uid="uid://cbyi2vqvli5q4" path="res://interactable.tscn" id="1_cjed7"]
+
+[node name="BathroomGuy" instance=ExtResource("1_cjed7")]
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+animation = &"idle_down"
+autoplay = "idle_down"
