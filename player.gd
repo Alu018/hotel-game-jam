@@ -22,13 +22,15 @@ func _ready():
 	# Position sprint bar above player (adjust as needed)
 	sprint_bar_container.position = Vector2(-6, -12)  # 50px wide bar, 40px above player
 	current_stamina = max_stamina
-	update_sprint_bar()
+	#update_sprint_bar()
+	sprint_bar_container.visible = false
 
 func get_input():
 	var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	
 	# Check if trying to sprint and can sprint
-	var trying_to_sprint = Input.is_action_pressed("speed_up")
+	#var trying_to_sprint = Input.is_action_pressed("speed_up")
+	var trying_to_sprint = false
 	
 	# FIXED: Check both current_stamina AND can_sprint
 	if trying_to_sprint and current_stamina > 0 and can_sprint and input_direction != Vector2.ZERO:
