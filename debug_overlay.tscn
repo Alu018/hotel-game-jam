@@ -1,9 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://deonwqx8n2ypy"]
-
-[ext_resource type="Script" uid="uid://uc0uk117gqw6" path="res://debug_overlay.gd" id="1_t3oe4"]
+[gd_scene format=3 uid="uid://deonwqx8n2ypy"]
 
 [node name="DebugOverlay" type="CanvasLayer"]
-script = ExtResource("1_t3oe4")
 
 [node name="QuestLabel" type="Label" parent="."]
 anchors_preset = 1

@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var SPEED = 85
-@export var SPRINT_SPEED = 400
+@export var SPRINT_SPEED = 85
 var canMove = true
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 
@@ -51,7 +51,7 @@ func _physics_process(delta):
 		return
 		
 	# Handle stamina system
-	handle_stamina(delta)
+	#handle_stamina(delta)
 	
 	get_input()
 	move_and_slide()

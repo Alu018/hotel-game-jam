@@ -621,11 +621,11 @@ func _process(delta):
 		_show_line()
 		
 #	DEBUG
-	if Input.is_action_just_pressed("debug_addItems"):
-		Inventory.add_item(flash_drive)
-		Inventory.add_item(business_card)
-		Inventory.add_item(picture)
-		Inventory.add_item(glasses)
+	#if Input.is_action_just_pressed("debug_addItems"):
+		#Inventory.add_item(flash_drive)
+		#Inventory.add_item(business_card)
+		#Inventory.add_item(picture)
+		#Inventory.add_item(glasses)
 
 func _end_dialogue():
 	visible = false
