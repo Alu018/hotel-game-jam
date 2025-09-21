@@ -105,4 +105,4 @@ layout_mode = 2
 size_flags_vertical = 4
 theme_override_fonts/font = ExtResource("2_gf3dx")
 theme_override_font_sizes/font_size = 8
-text = "RETURN"
+text = "EXIT"

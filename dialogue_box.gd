@@ -130,7 +130,7 @@ var wine_petrus_noir = {
 ]
 
 @onready var text_concierge_q0 = [
-	{"text": "Hello, and welcome to the Hartwell Hotel! How can I help you?", "choices": []},
+	{"text": "Hello, and welcome to our charming hotel! How can I help you?", "choices": []},
 	{"text": "Are you looking for a room with us?", "choices": [
 		{"text": "Yes", "next_line": 2}
 	]},
@@ -148,12 +148,12 @@ var wine_petrus_noir = {
 	{"text": "Oh my goodness! You're the guest we've been waiting for! I'm so sorry, I didn't recognize you.", "choices": []},
 	{"text": "It says here your name is... M? Just M?", "choices": []},
 	{"text": "We heard that you were going to arrive around this time. Thank you so much for your patronage - and please know you are our valued guest.", "choices": []},
-	{"text": "Before I direct you to your room, let me go through some of our amenities here at the Hartwell Hotel.", "choices": []},
+	{"text": "Before I direct you to your room, let me go through some of our amenities here at the hotel.", "choices": []},
 	{"text": "We have ten beautiful rooms here, each fitted with a plush bed and full bath for a restful night.", "choices": []},
 	{"text": "In addition, we have our newly renovated Recreation Room to your left, for all your media and entertainment needs.", "choices": []},
 	{"text": "And on the north side of the hotel, we just finished construction on our outdoor Courtyard if you need a breath of fresh air and greenery.", "choices": []},
 	{"text": "With that, here is your room key to Room 9, on your right.", "choices": []},
-	{"text": "Please enjoy your stay here at the Hartwell, Patron M.", "choices": []},
+	{"text": "Please enjoy your stay here, Patron M.", "choices": []},
 	{"text": "[An item was just added to your inventory on the top left!]", "choices": []},
 ]
 
@@ -217,7 +217,7 @@ var wine_petrus_noir = {
 
 @onready var text_greeter = [
 	{"text": "Hello!", "choices": []},
-	{"text": "Welcome to the Hartwell Hotel, where every room has a story.", "choices": []},
+	{"text": "Welcome to our lovely hotel, where comfort is our number one priority.", "choices": []},
 	{"text": "If you're looking to check in, the concierge is just up ahead.", "choices": []}
 ]
 
@@ -365,9 +365,11 @@ var wine_petrus_noir = {
 	"CourtyardPerson": "Hotel Guest",
 	"Room2_Dad": "Hotel Guest",
 	"Room2_Mom": "Hotel Guest",
+	"Room2_Kid": "Hotel Guest",
 	"PaintingAdmirer": "Hotel Guest",
 	"BathroomGuy": "Hotel Guest",
-	"PlayerBed": "Bed"
+	"PlayerBed": "Bed",
+	"SleepNode": "---"
 }
 
 # ------ ITEMS -------
@@ -682,13 +684,14 @@ func _end_dialogue():
 		"Safe":
 			Inventory.add_item(m_journal)
 			Inventory.add_item(wine_cellar_key)
+			GameState.set_flag("hasCellarKey", 1)
 			
 #				if you also printed the label from the 				flash drive, advance to quest 5
 			if GameState.get_flag("hasPrintedLabel") == true:
 				GameState.advance_quest()
 				
 			start_dialogue(node_journal, text_m_journal, player)
-		"PlayerBed":
+		"Bed":
 	#		show the end black screen
 			%EndScreenPanel.visible = true
 			%Player.canMove = false
@@ -869,6 +872,9 @@ func _on_safe_safe_opened(npc_node):
 	{"text": "This door is locked.", "choices": []},
 	{"text": "Maybe the Concierge can give me access.", "choices": []},
 ]
+@onready var text_wineCellar_q4_hasKey = [
+	{"text": "I have the key, but I should investigate M's items before going in.", "choices": []},
+]
 @onready var text_wineCellar_q5 = [
 	{"text": "Use the wine cellar key?", "choices": [
 		{"text": "Yes", "next_line": 1}
@@ -881,6 +887,9 @@ func _on_wine_cellar_door_interact(npc_node):
 	match GameState.quest:
 		5:
 			start_dialogue(npc_node, text_wineCellar_q5, player)
+		4:
+			if GameState.get_flag("hasCellarKey") == true:
+				start_dialogue(npc_node, text_wineCellar_q4_hasKey, player)
 		2:
 			start_dialogue(npc_node, text_wineCellar_q2, player)
 		1:
@@ -980,10 +989,16 @@ func _on_room_2_kid_interact(npc_node: Variant) -> void:
 	
 	{"text": "(You settle in bed and drift off to sleep.)", "choices": []},
 ]
+@onready var text_player_bed_q1 = [
+	{"text": "A nice, comfy bed.", "choices": []},
+]
 
 func _on_player_bed_interact(npc_node):
-	if GameState.quest == 8:
-		start_dialogue(npc_node, text_player_bed, player)
+	match GameState.quest:
+		8:
+			start_dialogue(npc_node, text_player_bed, player)
+		_:
+			start_dialogue(npc_node, text_player_bed_q1, player)
 
 @onready var text_painting_admirer = [
 	{"text": "Hmmm... what a curious painting. It evokes such fear in the viewer.", "choices": []},

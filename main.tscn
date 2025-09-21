@@ -1,4 +1,4 @@
-[gd_scene load_steps=101 format=4 uid="uid://bwni2ngdfoydd"]
+[gd_scene load_steps=105 format=4 uid="uid://bwni2ngdfoydd"]
 
 [ext_resource type="Script" uid="uid://dbi5eu58hbev0" path="res://main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://c1c8yhsy4l52h" path="res://player.tscn" id="1_ig7tw"]
@@ -37,6 +37,8 @@
 [ext_resource type="Texture2D" uid="uid://cks7mr8l354g5" path="res://Cute_Fantasy_Free/Animals/Chicken/Chicken.png" id="22_h8e4i"]
 [ext_resource type="PackedScene" uid="uid://dbgsog6nrbs4a" path="res://npc_old_lady.tscn" id="22_xuqvo"]
 [ext_resource type="Texture2D" uid="uid://dc0hxdy5pjx0a" path="res://Hana Caraka - Topdown Tileset [sample]/Props/Bush.png" id="24_0cp0l"]
+[ext_resource type="Script" uid="uid://qlfdwofu5ueh" path="res://go_to_sleep_area.gd" id="25_4w656"]
+[ext_resource type="PackedScene" uid="uid://b5ibpr8v30av2" path="res://sleep_node.tscn" id="25_e71vb"]
 [ext_resource type="PackedScene" uid="uid://4rclapwnintl" path="res://wine_cellar_door.tscn" id="25_gngh3"]
 [ext_resource type="PackedScene" uid="uid://cleeig3com4qf" path="res://enter_room_door.tscn" id="25_qsp4k"]
 [ext_resource type="PackedScene" uid="uid://efa5ij5mo14f" path="res://red_tree.tscn" id="28_d2t1y"]
@@ -3571,6 +3573,9 @@ sources/1 = SubResource("TileSetAtlasSource_kq58d")
 [sub_resource type="CircleShape2D" id="CircleShape2D_uypp3"]
 radius = 4.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4w656"]
+size = Vector2(56, 48)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_4lmeg"]
 atlas = ExtResource("22_h8e4i")
 region = Rect2(0, 0, 32, 32)
@@ -3615,6 +3620,9 @@ size = Vector2(20, 3.5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_come4"]
 radius = 3.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6iyjs"]
+size = Vector2(28, 4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0cp0l"]
 size = Vector2(29, 10)
@@ -3779,6 +3787,19 @@ region_rect = Rect2(176, 34, 16, 24)
 position = Vector2(53, 403)
 shape = SubResource("CircleShape2D_uypp3")
 
+[node name="SleepNode" parent="Hallways" instance=ExtResource("25_e71vb")]
+unique_name_in_owner = true
+position = Vector2(-205, -50)
+
+[node name="GoToSleepArea" type="Area2D" parent="Hallways"]
+position = Vector2(-189, -57)
+script = ExtResource("25_4w656")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hallways/GoToSleepArea"]
+position = Vector2(5, 8)
+shape = SubResource("RectangleShape2D_4w656")
+debug_color = Color(0.956284, 0.0279024, 0.523983, 0.42)
+
 [node name="HangingPlant" type="Sprite2D" parent="."]
 position = Vector2(-341, 59)
 texture = ExtResource("5_4c57u")
@@ -3893,11 +3914,19 @@ texture = ExtResource("6_yaehf")
 region_enabled = true
 region_rect = Rect2(374, 156, 32, 14)
 
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="YSort/OutdoorArea/OutdoorObjects"]
+position = Vector2(176, -429)
+shape = SubResource("RectangleShape2D_6iyjs")
+
 [node name="Bench2" type="Sprite2D" parent="YSort/OutdoorArea/OutdoorObjects"]
 position = Vector2(112, -429)
 texture = ExtResource("6_yaehf")
 region_enabled = true
 region_rect = Rect2(374, 156, 32, 14)
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="YSort/OutdoorArea/OutdoorObjects"]
+position = Vector2(112, -429)
+shape = SubResource("RectangleShape2D_6iyjs")
 
 [node name="RedTree" parent="YSort/OutdoorArea/OutdoorObjects" instance=ExtResource("28_d2t1y")]
 position = Vector2(144, -429)
@@ -4427,10 +4456,6 @@ script = ExtResource("14_2cqfq")
 [node name="PlayerBlocker_Room8" parent="." instance=ExtResource("37_come4")]
 position = Vector2(721, -74)
 
-[node name="DialogueBox" parent="." instance=ExtResource("8_5vw27")]
-unique_name_in_owner = true
-visible = false
-
 [node name="TutorialArea" type="Area2D" parent="."]
 position = Vector2(252, 338)
 script = ExtResource("51_6iyjs")
@@ -4478,11 +4503,15 @@ autowrap_mode = 2
 
 [node name="BlackScreen" type="ColorRect" parent="."]
 unique_name_in_owner = true
-offset_left = -18.0
-offset_top = 147.0
-offset_right = 495.0
-offset_bottom = 477.0
+offset_left = -7.0
+offset_top = 196.0
+offset_right = 506.0
+offset_bottom = 526.0
 color = Color(0, 0, 0, 1)
+
+[node name="DialogueBox" parent="." instance=ExtResource("8_5vw27")]
+unique_name_in_owner = true
+visible = false
 
 [node name="InventoryUI" parent="." instance=ExtResource("13_ycdy4")]
 unique_name_in_owner = true

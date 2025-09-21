@@ -1,12 +1,12 @@
 extends CharacterBody2D
 
 @export var SPEED = 85
-@export var SPRINT_SPEED = 155
+@export var SPRINT_SPEED = 400
 var canMove = true
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 
 # NEW SPRINT SYSTEM VARIABLES
-var max_stamina = 1.0  # 1 second of sprint
+var max_stamina = 10.0  # 1 second of sprint
 var current_stamina = 1.0
 var stamina_drain_rate = 1.0  # Drains 1.0 per second when sprinting
 var stamina_regen_rate = 0.5  # Regens 0.5 per second when not sprinting

@@ -4,6 +4,6 @@
 
 [node name="Room2_Kid" instance=ExtResource("1_qlb7x")]
 
-[node name="AnimatedSprite2D" parent="." index="3"]
+[node name="AnimatedSprite2D" parent="." index="0"]
 animation = &"idle_down"
 autoplay = "idle_down"
