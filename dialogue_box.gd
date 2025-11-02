@@ -692,9 +692,12 @@ func _end_dialogue():
 				
 			start_dialogue(node_journal, text_m_journal, player)
 		"Bed":
-	#		show the end black screen
-			%EndScreenPanel.visible = true
-			%Player.canMove = false
+			if GameState.quest >= 8:
+		#		show the end black screen
+				%EndScreenPanel.visible = true
+				%Player.canMove = false
+			else:
+				pass
 
 # ---------------- NPC Interactions ----------------
 func _on_concierge_interact(npc_node):
